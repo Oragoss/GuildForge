@@ -1,17 +1,16 @@
 import React, {Component} from 'react';
+import Chat from '../Chat/Chat'
 
 class Home extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            isToggleOn: true,
-            isMessagesOn : false,
+            isMessagesOn : true,
             isFriendsOn : false,
-            isChatOn : true,
+            isChatOn : false,
             isLoggedIn : false
         };
 
-        // This binding is necessary to make `this` work in the callback
         this.loginClick = this.loginClick.bind(this);
         this.chatClick = this.chatClick.bind(this)
         this.messagesClick = this.messagesClick.bind(this)
@@ -52,30 +51,22 @@ class Home extends Component {
 
     render() {
         const state = this.state
-        let paragraph
+        let pageSection
         if(state.isChatOn) {
-            paragraph = <div className="ui raised very padded text container segment">
-                            <h2 className="ui header center aligned">Welcome to guild forge</h2>
-                            <p className ="ui center aligned grid">Forge Your Guild Now!</p>
-                        </div>
+            pageSection = <Chat />
         }
         else if(state.isMessagesOn) {
-            paragraph = `<p>
-            Messages ipsum, dolor sit amet consectetur adipisicing elit. Recusandae nulla vero, accusantium et dicta labore amet cumque porro, aliquam similique eaque obcaecati non error deserunt a aut rem modi asperiores.
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Recusandae nulla vero, accusantium et dicta labore amet cumque porro, aliquam similique eaque obcaecati non error deserunt a aut rem modi asperiores.
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Recusandae nulla vero, accusantium et dicta labore amet cumque porro, aliquam similique eaque obcaecati non error deserunt a aut rem modi asperiores.
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Recusandae nulla vero, accusantium et dicta labore amet cumque porro, aliquam similique eaque obcaecati non error deserunt a aut rem modi asperiores.
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Recusandae nulla vero, accusantium et dicta labore amet cumque porro, aliquam similique eaque obcaecati non error deserunt a aut rem modi asperiores.
-            </p>`
+            pageSection =
+            <div className="ui raised very padded text container segment">
+                <h2 className="ui header center aligned">Welcome to guild forge</h2>
+                <p className ="ui center aligned grid">Forge Your Guild Now!</p>
+            </div>
         }
         else if(state.isFriendsOn) {
-            paragraph = `<p>
-            Friends ipsum, dolor sit amet consectetur adipisicing elit. Recusandae nulla vero, accusantium et dicta labore amet cumque porro, aliquam similique eaque obcaecati non error deserunt a aut rem modi asperiores.
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Recusandae nulla vero, accusantium et dicta labore amet cumque porro, aliquam similique eaque obcaecati non error deserunt a aut rem modi asperiores.
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Recusandae nulla vero, accusantium et dicta labore amet cumque porro, aliquam similique eaque obcaecati non error deserunt a aut rem modi asperiores.
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Recusandae nulla vero, accusantium et dicta labore amet cumque porro, aliquam similique eaque obcaecati non error deserunt a aut rem modi asperiores.
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Recusandae nulla vero, accusantium et dicta labore amet cumque porro, aliquam similique eaque obcaecati non error deserunt a aut rem modi asperiores.
-            </p>`
+            pageSection =
+            <div className="ui raised text container">
+                <iframe title="discord-friends-list" src="https://discordapp.com/widget?id=428211209855172629&theme=dark" width="350" height="500" allowtransparency="true" frameBorder="0"></iframe>
+            </div>
         }
 
         return (
@@ -97,7 +88,7 @@ class Home extends Component {
                     </div>
                 </div>
                 <div className="ui segment">
-                    {paragraph}
+                    {pageSection}
                 </div>
             </div>
         );

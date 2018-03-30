@@ -1,12 +1,12 @@
 //https://titanembeds.com/
-import React, {Component} from 'react'
+import React from 'react'
 
-class Chat extends Component {
-    render() {
-        return (
-            <iframe title="discord-chat" src="https://titanembeds.com/embed/428211209855172629" height="600" width="800" frameborder="0"></iframe>
-        )
-    }
+const Chat = () => {
+    return (
+        <div className="ui raised text container">
+            <iframe title="discord-chat" src="https://titanembeds.com/embed/428211209855172629" height="600" width="800" frameBorder="0"></iframe>
+        </div>
+    )
 }
 
 export default Chat
